@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
+    <link rel="stylesheet" type="text/css" href="{% url giti.views.raw repo_name="giti" path="style.css" %}">
+  </head> 
+  
+  <body>
+    <div id="container">
+      <div id='title'>
+        <h1>{% block title %}{% endblock %}</h1>
+      </div>
+
+      {% block stage %}
+      {% with repo.get_git_repo.head.commit.diff as diff %}
+      {% if diff %}
+      <div id='stage'>
+          <h3>{{ diff|length }} staged changes:</h3>
+          {% for entry in diff %}
+            <pre>M <a href='{% url giti.views.edit repo_name=repo.name path=entry.b_blob.path %}'>{{ entry.b_blob.path }}</a></pre>
+          {% endfor %}
+          <button onClick='location.href = "{% url giti.views.index_commit repo_name=repo.name %}";'>Show diff and commit</button>
+          <button onClick='location.href = "{% url giti.views.index_revert repo_name=repo.name %}"; '>Revert all changes</button>
+      </div>
+      {% endif %}
+      {% endwith %}
+      {% endblock %}
+
+      <div id='content'>
+        {% block content %}{% endblock %}
+    </div>
+</div>
+  </body>
+</html>

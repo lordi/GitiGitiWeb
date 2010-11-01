@@ -1,0 +1,22 @@
+GitiGitiWeb  -  personal wiki system
+-----------------------------------------------------------------------------
+
+GitiGitiWeb is a Django application that provides read/write access to Git
+repositories by interfacing with git-python. Currently it is designed as a
+single-user system with no authentication capabilities.
+
+It does not require a database besides Git.
+
+Requirements:
+ * django
+ * git-python
+ * git
+
+Setup
+=====
+
+$ django-admin.py startproject yourproject
+$ cp -r giti yourproject/giti
+$ cd yourproject
+...
+

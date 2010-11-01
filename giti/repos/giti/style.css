@@ -1,0 +1,50 @@
+* {margin:0;padding:0;}
+html,body{height:100%;color:black;}
+body{background-color:white;font:13.34px helvetica,arial,freesans,clean,sans-serif;*font-size:small;}
+#main{background:#fff url(/images/modules/header/background-v2.png) 0 0 repeat-x;}
+table{font-size:inherit;font:100%;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+input.text{padding:1px 0;}
+pre,code,.blobedit{font:12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;}
+.blobedit { padding: 2px;}
+body *{line-height:1.4em;}
+p{margin:1em 0;}
+img{border:0;}
+abbr{border-bottom:none;}
+#container { width: 600px; margin-left: auto; margin-right: auto;
+}
+        #title, #content, #stage { 
+            width: 600px;
+            padding: 4px;
+            margin: 5px;
+            background-color: #FFF1AF;
+        }
+        #data {
+            margin-top: 4px;
+            padding: 3px;
+            background-color: white;
+        }
+        .item {
+            padding: 2px;
+            margin: 0px;
+            margin-bottom: 2px;
+        }
+        h1, h2, h3 {
+            color: #170F0E;
+        }
+        a {
+            color: #290418;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .tree { 
+            background-color: #FFD372;
+        }
+        .blob { 
+            background-color: #FFD372;
+        } 
+        body {
+            background-color: #505217;
+        }

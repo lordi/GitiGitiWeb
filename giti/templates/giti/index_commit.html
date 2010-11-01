@@ -1,0 +1,27 @@
+{% extends "giti/base.html" %}
+
+{% block title %}<a href='{% url giti.views.tree_show repo_name=repo.name path='' %}'>{{ repo.name }}</a>: Commit{% endblock %}
+
+      {% block stage %}
+      {% with repo.get_git_repo.head.commit.diff as diff %}
+      {% if diff %}
+      <div id='stage'>
+          <h3>{{ diff|length }} staged changes:</h3>
+          {% for entry in diff %}
+            <pre>{{ entry }} 
+&gt; <a href='{% url giti.views.edit repo_name=repo.name path=entry.b_blob.path %}'>{{ entry.b_blob.path }}</a></pre>
+          {% endfor %}
+
+          <form method=post>
+            {% csrf_token %}
+            <input type='text' name='commit_msg' size=40 value='Commit from GitiGitiWeb' />
+            <button type='submit'>Commit</button>
+          </form>
+
+      </div>
+      {% endif %}
+      {% endwith %}
+      {% endblock %}
+
+{% block content %}
+{% endblock %}
