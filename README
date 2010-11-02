@@ -8,15 +8,38 @@ single-user system with no authentication capabilities.
 It does not require a database besides Git.
 
 Requirements:
- * django
- * git-python
- * git
+ * django  
+ * gitpython
 
 Setup
 =====
 
-$ django-admin.py startproject yourproject
-$ cp -r giti yourproject/giti
-$ cd yourproject
-...
+ * Create a new django project.
+ * Copy the 'giti' folder to your project.
+ * In settings.py, add 'giti' to the INSTALLED_APPS.
+ * In settings.py, add '/full/path/to/giti/templates' to TEMPLATE_DIRS.
 
+ * Now, we set up the repositories. A repository called "giti" must be
+   present in order to use style sheets etc. Create it with the following
+   commands:
+ 
+   $ cd giti/repos/giti
+   $ git init
+   $ git add *
+   $ git commit -a -m "Initial commit"
+
+   Repeat the commands for any number of additional repositories you
+   want to manage with GitiGitiWeb and modify settings.py to include
+   the following.
+
+   REPOSITORY_PATHS = {
+     'giti': 'giti/repos/giti',
+     'myrepository1': 'giti/repos/repository1',
+     'myrepository2': 'giti/repos/repository2',
+     ...
+   }
+
+   Of course, you can use existing external repositories.
+
+ * Try "./manage.py runserver" and point your browser to the shown
+   URL to test-run GitiGitiWeb.
