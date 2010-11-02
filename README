@@ -5,11 +5,11 @@ GitiGitiWeb is a Django application that provides read/write access to Git
 repositories by interfacing with git-python. Currently it is designed as a
 single-user system with no authentication capabilities.
 
-It does not require a database besides Git.
+It does not require database support besides Git.
 
 Requirements:
- * django  
- * gitpython
+ * django
+ * GitPython
 
 Setup
 =====
@@ -22,7 +22,7 @@ Setup
  * Now, we set up the repositories. A repository called "giti" must be
    present in order to use style sheets etc. Create it with the following
    commands:
- 
+
    $ cd giti/repos/giti
    $ git init
    $ git add *
@@ -43,3 +43,13 @@ Setup
 
  * Try "./manage.py runserver" and point your browser to the shown
    URL to test-run GitiGitiWeb.
+
+
+Troubleshooting
+===============
+
+If the error "ValueError: signal only works in main thread" is raised when
+running GitiGitiWeb, make sure you easy_install the latest development
+version of the async library that comes with GitPython
+(http://gitorious.org/git-python).
+
