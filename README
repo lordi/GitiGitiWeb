@@ -23,26 +23,32 @@ Setup
    present in order to use style sheets etc. Create it with the following
    commands:
 
-   $ cd giti/repos/giti
-   $ git init
-   $ git add *
-   $ git commit -a -m "Initial commit"
+     $ cd giti/repos/giti
+     $ git init
+     $ git add *
+     $ git commit -a -m "Initial commit"
 
    Repeat the commands for any number of additional repositories you
    want to manage with GitiGitiWeb and modify settings.py to include
    the following.
 
-   REPOSITORY_PATHS = {
-     'giti': 'giti/repos/giti',
-     'myrepository1': 'giti/repos/repository1',
-     'myrepository2': 'giti/repos/repository2',
-     ...
-   }
+     REPOSITORY_PATHS = {
+       'giti': 'giti/repos/giti',
+       'myrepository1': 'giti/repos/repository1',
+       'myrepository2': 'giti/repos/repository2',
+       ...
+     }
 
    Of course, you can use existing external repositories.
 
- * Try "./manage.py runserver" and point your browser to the shown
+ * Add the following entry to urls.py (path is arbitrary):
+
+     (r'^path/', include('giti.urls')),
+
+ * Finally, run "./manage.py runserver" and point your browser to the shown
    URL to test-run GitiGitiWeb.
+
+
 
 
 Troubleshooting
