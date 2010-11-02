@@ -5,7 +5,7 @@
 {% block content %}
 {% for object in object_list %}
 <div class='repo item'>
-    <a href='list/{{ object.name }}/'>{{ object }}</a><br>
+    <a href='{% url giti.views.tree_show repo_name=object.name path='' %}'>{{ object }}</a><br>
 </div>
 {% endfor %}
 {% endblock %}

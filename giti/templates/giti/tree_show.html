@@ -6,15 +6,15 @@
 
 {% for t in tree.trees %}
 <div class='item tree'>
-    <a href='/list/{{ repo.name }}/{{ t.path }}/'>{{ t.name }}</a>
-</div>    
+    <a href='{% url giti.views.tree_show repo_name=repo.name path=t.path %}'>{{ t.name }}</a>
+</div>
 {% endfor %}
 
 {% for b in tree.blobs %}
 <div class='item blob'>
-    <a href='/show/{{ repo.name }}/{{ b.path }}'>{{ b.name }}</a>
-    [ <a href='/edit/{{ repo.name }}/{{ b.path }}'>Edit</a> ]
-    [ <a href='/delete/{{ repo.name }}/{{ b.path }}'>Delete</a> ]
-</div>    
+    <a href='{% url giti.views.show repo_name=repo.name path=b.path %}'>{{ b.name }}</a>
+    [ <a href='{% url giti.views.edit repo_name=repo.name path=b.path %}'>Edit</a> ]
+    [ <a href='{% url giti.views.delete repo_name=repo.name path=b.path %}'>Delete</a> ]
+</div>
 {% endfor %}
 {% endblock %}
