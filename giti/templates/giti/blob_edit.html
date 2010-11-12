@@ -3,7 +3,7 @@
 
 {% block content %}
 {% with blob.data_stream.read as data %}
-<form action='/stage/{{ repo.name }}/{{ blob.path }}' method='post'>
+<form action='{% url giti.views.stage repo_name=repo.name path=blob.path %}' method='post'>
     {% csrf_token %}
     <textarea class='blobedit' cols=80 rows=22 name=data>{{ data }}</textarea>
     <button type=submit>Stage changes blob</button>
