@@ -3,13 +3,10 @@
 {% block title %}<a href='{% url giti.views.tree_show repo_name=repo.name path='' %}'>{{ repo.name }}</a>: {{ blob.path }}{% endblock %}
 
 {% block content %}
-{% with blob.data_stream.read as data %}
 {{ blob.path }} ({{ data|length|filesizeformat }}), 
 <a href="{% url giti.views.edit repo_name=repo.name path=blob.path %}">edit</a>,
 <a href="{% url giti.views.raw repo_name=repo.name path=blob.path %}">download</a>. {{ blob.mime_type }}
 <div id='data'>
     <pre>{{ data }}</pre>
 </div>
-{% endwith %}
-
 {% endblock %}

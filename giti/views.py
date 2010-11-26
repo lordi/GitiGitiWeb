@@ -1,5 +1,5 @@
 from giti.utils import get_repo_or_404, get_blob_or_404, get_tree_or_404,\
-        get_all_repositories
+        get_all_repositories, get_data_from_blob
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.http import HttpResponse
@@ -19,8 +19,9 @@ def edit(request, repo_name, path):
     git_repo = repo.get_git_repo()
     commit = git_repo.head.commit
     blob = get_blob_or_404(commit, path)
+    data = get_data_from_blob(blob)
     return render_to_response('giti/blob_edit.html',
-            {'commit': commit, 'blob': blob, 'repo': repo},
+            {'commit': commit, 'blob': blob, 'repo': repo, 'data': data},
             RequestContext(request))
 
 def raw(request, repo_name, path):
@@ -35,8 +36,9 @@ def show(request, repo_name, path):
     git_repo = repo.get_git_repo()
     commit = git_repo.head.commit
     blob = get_blob_or_404(commit, path)
+    data = get_data_from_blob(blob)
     return render_to_response('giti/blob_show.html',
-            {'commit': commit, 'blob': blob, 'repo': repo},
+            {'commit': commit, 'blob': blob, 'repo': repo, 'data': data},
             RequestContext(request))
 
 def stage(request, repo_name, path):

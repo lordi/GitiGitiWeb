@@ -30,4 +30,14 @@ def get_tree_or_404(commit, path):
 #    nodes = [node for node in tree.trees if node.name == path[0]]
 #    return traverse_tree(nodes[0], path[1:])
 
-
+def get_data_from_blob(blob):
+    """return the blob's data as a decoded unicode string"""
+    data = blob.data_stream.read()
+    try:
+        data = data.decode("utf-8")
+    except UnicodeDecodeError:
+        try:
+            data = data.decode("ascii")
+        except UnicodeDecodeError:
+            data = data.decode("latin1")
+    return data
